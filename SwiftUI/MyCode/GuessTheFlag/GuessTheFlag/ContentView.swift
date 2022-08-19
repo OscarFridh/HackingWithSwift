@@ -10,12 +10,21 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Spacer()
-            Text("First")
-            Text("Second")
-            Text("Third")
-            Spacer()
-            Spacer()
+            HStack {
+                Text("A")
+                Text("B")
+                Text("C")
+            }
+            HStack {
+                Text("D")
+                Text("E")
+                Text("F")
+            }
+            HStack {
+                Text("G")
+                Text("H")
+                Text("I")
+            }
         }
     }
 }
