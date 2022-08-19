@@ -9,10 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        LinearGradient(gradient: Gradient(stops: [
-            .init(color: .red, location: 0.45),
-            .init(color: .green, location: 0.75)
-        ]), startPoint: .top, endPoint: .bottom)
+        RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 20, endRadius: 200)
     }
 }
 
