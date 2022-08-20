@@ -15,6 +15,9 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2)
     
     @State private var score = 0
+    @State private var answers: [Bool] = []
+    
+    @State private var showingResult = false
     
     var body: some View {
         ZStack {
@@ -68,6 +71,9 @@ struct ContentView: View {
             } message: {
                 Text("Your score is \(score)")
             }
+            .alert("Result: \(answers.filter { $0 }.count) / \(answers.count)", isPresented: $showingResult) {
+                Button("Try again", action: restart)
+            }
             .padding()
         }
     }
@@ -76,17 +82,30 @@ struct ContentView: View {
         if number == correctAnswer {
             scoreTitle = "Correct"
             score += 1
+            answers.append(true)
         } else {
             scoreTitle = "Wrong! That's the flag of \(countries[number])"
             score = 0
+            answers.append(false)
         }
         
-        showingScore = true
+        if answers.count == 8 {
+            showingResult = true
+        } else {
+            showingScore = true
+        }
     }
     
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+    }
+    
+    func restart() {
+        answers = []
+        score = 0
+        scoreTitle = ""
+        askQuestion()
     }
 }
 
