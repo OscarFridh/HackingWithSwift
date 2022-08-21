@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var useRedText = false
+    
     var body: some View {
-        VStack {
-            Button("Some button") {
-                // The VStack content is wrapped in a TyppeView so that types are preserved
-                print(type(of: self.body))
-            }
-            Text("Another type of view")
+        Button("Hello, world") {
+            useRedText.toggle()
         }
+        .foregroundColor(useRedText ? .red : .blue)
     }
 }
 
