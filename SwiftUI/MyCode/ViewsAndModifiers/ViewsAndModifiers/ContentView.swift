@@ -9,25 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world")
-            .titleStyle()
+        Color.blue
+            .frame(width: 300, height: 300)
+            .watermarked(with: "Hacking with Swift")
+    }
+}
+
+struct Watermark: ViewModifier {
+    var text: String
+    
+    func body(content: Content) -> some View {
+        ZStack(alignment: .bottomTrailing) {
+            content
+            Text(text)
+                .font(.caption)
+                .foregroundColor(.white)
+                .padding(5)
+                .background(.black)
+        }
     }
 }
 
 extension View {
-    func titleStyle() -> some View {
-        modifier(Title())
-    }
-}
-
-struct Title: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .font(.largeTitle)
-            .foregroundColor(.white)
-            .padding()
-            .background(.blue)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+    func watermarked(with text: String) -> some View {
+        modifier(Watermark(text: text))
     }
 }
 
