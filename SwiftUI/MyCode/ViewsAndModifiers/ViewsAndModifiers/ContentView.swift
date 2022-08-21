@@ -9,25 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 10) {
-            CapsuleText(text: "First")
-                .foregroundColor(.white)
-            CapsuleText(text: "Second")
-                .foregroundColor(.yellow)
-        }
+        Text("Hello, world")
+            .titleStyle()
     }
 }
 
-struct CapsuleText: View {
-    var text: String
-    
-    var body: some View {
-        Text(text)
+extension View {
+    func titleStyle() -> some View {
+        modifier(Title())
+    }
+}
+
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
             .font(.largeTitle)
+            .foregroundColor(.white)
             .padding()
-            //.foregroundColor(.white) // Needs to be removed if customized on usage
             .background(.blue)
-            .clipShape(Capsule())
+            .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 
