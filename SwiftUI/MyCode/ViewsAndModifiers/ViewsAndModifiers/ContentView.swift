@@ -9,16 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-            .background(.red)
-            .padding()
-            .background(.blue)
-            .padding()
-            .background(.green)
-            .background(in: Capsule())
-            .padding()
-            .background(.yellow)
+        VStack {
+            Button("Some button") {
+                // The VStack content is wrapped in a TyppeView so that types are preserved
+                print(type(of: self.body))
+            }
+            Text("Another type of view")
+        }
     }
 }
 
