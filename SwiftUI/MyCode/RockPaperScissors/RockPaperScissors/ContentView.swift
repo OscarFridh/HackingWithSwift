@@ -14,11 +14,25 @@ struct ContentView: View {
     @State private var message = ""
     
     var body: some View {
+        ZStack {
+            backgroundView
+                .ignoresSafeArea()
+            gameContentView
+                .padding(50)
+                .background(.thinMaterial)
+                //.clipShape(RoundedRectangle(cornerRadius: 20))
+                .clipShape(Circle())
+                .shadow(radius: 10)
+        }
+    }
+    
+    var gameContentView: some View {
         VStack(spacing: 20) {
             Text("Score: \(game.score)")
+                .font(.title)
             if !game.finished {
                 Text("App move: \(game.appChoice.emoji)")
-                Text("Try to \(game.shouldWin ? "win" : "lose")")
+                Text("Try to **\(game.shouldWin ? "win" : "lose")**")
                 HStack {
                     ForEach(Move.allCases) { move in
                         Button(move.emoji) {
@@ -36,6 +50,10 @@ struct ContentView: View {
         .alert(message, isPresented: $showAlert) {
             Button("OK") {}
         }
+    }
+    
+    var backgroundView: some View {
+        RadialGradient(colors: [.blue, .black], center: .center, startRadius: 100, endRadius: 500)
     }
     
     func playerSelected(move: Move) {
