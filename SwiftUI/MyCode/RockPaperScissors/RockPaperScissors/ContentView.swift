@@ -8,9 +8,51 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var game = RockPaperScissorsGame(size: 3)
+    
+    @State private var showAlert = false
+    @State private var message = ""
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack(spacing: 20) {
+            Text("Score: \(game.score)")
+            if !game.finished {
+                Text("App move: \(game.appChoice.emoji)")
+                Text("Try to \(game.shouldWin ? "win" : "lose")")
+                HStack {
+                    ForEach(Move.allCases) { move in
+                        Button(move.emoji) {
+                            playerSelected(move: move)
+                        }
+                        .font(.system(size: 50))
+                    }
+                }
+            } else {
+                Button("Restart") {
+                    game.restart()
+                }
+            }
+        }
+        .alert(message, isPresented: $showAlert) {
+            Button("OK") {}
+        }
+    }
+    
+    func playerSelected(move: Move) {
+        message = "The player tapped \(move.emoji), the player was trying to \(game.shouldWin ? "win" : "loose"), and the app chose \(game.appChoice.emoji)"
+        let correct = game.select(move: move)
+        message += ", so \(correct ? "add" : "remove") 1 point"
+        showAlert = true
+    }
+}
+
+extension Move {
+    var emoji: String {
+        switch self {
+        case .rock: return "🪨"
+        case .paper: return "📄"
+        case .scissors: return "✂️"
+        }
     }
 }
 

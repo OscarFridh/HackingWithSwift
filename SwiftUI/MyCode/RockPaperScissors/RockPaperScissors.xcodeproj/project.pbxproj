@@ -11,6 +11,7 @@
 		B87C553E28BA7B0B00FA5A2E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C553D28BA7B0B00FA5A2E /* ContentView.swift */; };
 		B87C554028BA7B0C00FA5A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B87C553F28BA7B0C00FA5A2E /* Assets.xcassets */; };
 		B87C554328BA7B0C00FA5A2E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B87C554228BA7B0C00FA5A2E /* Preview Assets.xcassets */; };
+		B87C554C28BAA42D00FA5A2E /* RockPaperScissorsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C554B28BAA42D00FA5A2E /* RockPaperScissorsGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		B87C553D28BA7B0B00FA5A2E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B87C553F28BA7B0C00FA5A2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B87C554228BA7B0C00FA5A2E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B87C554B28BAA42D00FA5A2E /* RockPaperScissorsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissorsGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				B87C553B28BA7B0B00FA5A2E /* RockPaperScissorsApp.swift */,
 				B87C553D28BA7B0B00FA5A2E /* ContentView.swift */,
+				B87C554B28BAA42D00FA5A2E /* RockPaperScissorsGame.swift */,
 				B87C553F28BA7B0C00FA5A2E /* Assets.xcassets */,
 				B87C554128BA7B0C00FA5A2E /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B87C554C28BAA42D00FA5A2E /* RockPaperScissorsGame.swift in Sources */,
 				B87C553E28BA7B0B00FA5A2E /* ContentView.swift in Sources */,
 				B87C553C28BA7B0B00FA5A2E /* RockPaperScissorsApp.swift in Sources */,
 			);
