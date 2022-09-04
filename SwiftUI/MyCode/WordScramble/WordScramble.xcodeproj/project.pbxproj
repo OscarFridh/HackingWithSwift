@@ -11,6 +11,7 @@
 		B8668B9328C50D1B00105B4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8668B9228C50D1B00105B4F /* ContentView.swift */; };
 		B8668B9528C50D1B00105B4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8668B9428C50D1B00105B4F /* Assets.xcassets */; };
 		B8668B9828C50D1B00105B4F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8668B9728C50D1B00105B4F /* Preview Assets.xcassets */; };
+		B8668BA028C5140700105B4F /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = B8668B9F28C5140700105B4F /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		B8668B9428C50D1B00105B4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8668B9728C50D1B00105B4F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B8668B9E28C50FE100105B4F /* Strings.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Strings.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B8668B9F28C5140700105B4F /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = start.txt; path = "../../../project5-files/start.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		B8668B8F28C50D1B00105B4F /* WordScramble */ = {
 			isa = PBXGroup;
 			children = (
+				B8668B9F28C5140700105B4F /* start.txt */,
 				B8668B9E28C50FE100105B4F /* Strings.playground */,
 				B8668B9028C50D1B00105B4F /* WordScrambleApp.swift */,
 				B8668B9228C50D1B00105B4F /* ContentView.swift */,
@@ -128,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8668B9828C50D1B00105B4F /* Preview Assets.xcassets in Resources */,
+				B8668BA028C5140700105B4F /* start.txt in Resources */,
 				B8668B9528C50D1B00105B4F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
