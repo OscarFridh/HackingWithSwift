@@ -19,6 +19,14 @@ struct ContentView: View {
             }
             
             Text("Static Row")
+            
+            if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
+                Text("Found file! \(fileURL)")
+                if let fileContents = try? String(contentsOf: fileURL) {
+                    Text(fileContents)
+                }
+            }
+            
         }
         .listStyle(.grouped)
     }

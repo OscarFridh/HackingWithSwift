@@ -19,6 +19,7 @@
 		B8668B9228C50D1B00105B4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B8668B9428C50D1B00105B4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8668B9728C50D1B00105B4F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B8668B9E28C50FE100105B4F /* Strings.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Strings.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 		B8668B8F28C50D1B00105B4F /* WordScramble */ = {
 			isa = PBXGroup;
 			children = (
+				B8668B9E28C50FE100105B4F /* Strings.playground */,
 				B8668B9028C50D1B00105B4F /* WordScrambleApp.swift */,
 				B8668B9228C50D1B00105B4F /* ContentView.swift */,
 				B8668B9428C50D1B00105B4F /* Assets.xcassets */,
