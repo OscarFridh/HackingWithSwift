@@ -8,27 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
-    let people = ["Finn", "Leia", "Luke", "Rey"]
+    @State private var usedWord = [String]()
+    @State private var rootWord = ""
+    @State private var newWord = ""
     
     var body: some View {
-        List {
-            Text("Static Row")
-            
-            ForEach(people, id: \.self) {
-                Text($0)
-            }
-            
-            Text("Static Row")
-            
-            if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
-                Text("Found file! \(fileURL)")
-                if let fileContents = try? String(contentsOf: fileURL) {
-                    Text(fileContents)
+        NavigationView {
+            List {
+                Section {
+                    TextField("Enter your word", text: $newWord)
+                        .onSubmit(addNewWord)
+                        .textInputAutocapitalization(.never)
+                }
+                
+                Section {
+                    ForEach(usedWord, id: \.self) { word in
+                        HStack {
+                            Image(systemName: "\(word.count).circle")
+                            Text(word)
+                        }
+                    }
                 }
             }
-            
+            .navigationTitle(rootWord)
         }
-        .listStyle(.grouped)
+    }
+    
+    func addNewWord() {
+        let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        guard answer.count > 0 else { return }
+        
+        withAnimation {
+            usedWord.insert(answer, at: 0)
+        }
+        newWord = ""
     }
 }
 
