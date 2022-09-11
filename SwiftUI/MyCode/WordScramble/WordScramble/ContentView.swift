@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var usedWord = [String]()
+    @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
     
@@ -32,7 +32,7 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    ForEach(usedWord, id: \.self) { word in
+                    ForEach(usedWords, id: \.self) { word in
                         HStack {
                             Image(systemName: "\(word.count).circle")
                             Text(word)
@@ -41,6 +41,9 @@ struct ContentView: View {
                 }
             }
             .navigationTitle(rootWord)
+            .toolbar {
+                Button("New word", action: startGame)
+            }
         }
     }
     
@@ -75,13 +78,13 @@ struct ContentView: View {
         
         
         withAnimation {
-            usedWord.insert(answer, at: 0)
+            usedWords.insert(answer, at: 0)
         }
         newWord = ""
     }
     
     func isOriginal(word: String) -> Bool {
-        !usedWord.contains(word)
+        !usedWords.contains(word)
     }
     
     func isPossible(word: String) -> Bool {
@@ -118,6 +121,7 @@ struct ContentView: View {
                 let allWords = startWords.components(separatedBy: "\n")
                 
                 rootWord = allWords.randomElement() ?? "silkworm"
+                usedWords = []
                 
                 return
             }
