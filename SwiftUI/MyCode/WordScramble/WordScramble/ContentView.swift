@@ -16,6 +16,12 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
     
+    private var score: Int {
+        usedWords.reduce(0) { partialResult, usedWord in
+            partialResult + (usedWord.count * usedWord.count)
+        }
+    }
+    
     var body: some View {
         NavigationView {
             List {
@@ -29,6 +35,8 @@ struct ContentView: View {
                         } message: {
                             Text(errorMessage)
                         }
+                    
+                    Text("Score: \(score)")
                 }
                 
                 Section {
