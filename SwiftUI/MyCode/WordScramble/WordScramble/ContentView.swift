@@ -63,6 +63,17 @@ struct ContentView: View {
             return
         }
         
+        guard answer.count >= 3 else {
+            wordError(title: "Too few characters", message: "Spell a word with at least 3 characters!")
+            return
+        }
+        
+        guard answer != rootWord else {
+            wordError(title: "Not allowed", message: "Be more original!")
+            return
+        }
+        
+        
         withAnimation {
             usedWord.insert(answer, at: 0)
         }
