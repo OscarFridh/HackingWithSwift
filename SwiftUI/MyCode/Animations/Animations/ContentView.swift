@@ -20,7 +20,15 @@ struct ContentView: View {
         .clipShape(Circle())
         .scaleEffect(animationAmount)
         .blur(radius: (animationAmount - 1) * 3)
-        .animation(.default, value: animationAmount)
+        //.animation(.interpolatingSpring(stiffness: 100, damping: 10), value: animationAmount)
+        //.animation(.easeInOut(duration: 2), value: animationAmount)
+        .animation(
+            .easeInOut(duration: 2)
+//                .delay(1),
+//                .repeatCount(3, autoreverses: true),
+                .repeatForever(autoreverses: true),
+            value: animationAmount
+        )
     }
 }
 
