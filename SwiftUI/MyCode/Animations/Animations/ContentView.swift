@@ -22,7 +22,7 @@ struct ContentView: View {
                 Rectangle()
                     .fill(.red)
                     .frame(width: 200, height: 200)
-                    .transition(.scale) // Doesn't work properly in preview. Simulator looks good.
+                    .transition(.asymmetric(insertion: .scale, removal: .opacity))
             }
         }
     }
