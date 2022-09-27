@@ -57,6 +57,7 @@ struct ContentView: View {
                             .degrees(number == tappedFlagNumber ? 360 : 0),
                             axis: (x: 0, y: 1, z: 0)
                         )
+                        .opacity(tappedFlagNumber == nil || tappedFlagNumber == number ? 1 : 0.25)
                     }
                 }
                 .frame(maxWidth: .infinity)
