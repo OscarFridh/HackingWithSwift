@@ -18,6 +18,7 @@ struct ContentView: View {
     @State private var answers: [Bool] = []
     
     @State private var showingResult = false
+    @State private var tappedFlagNumber: Int?
     
     var body: some View {
         ZStack {
@@ -41,16 +42,7 @@ struct ContentView: View {
                         Text(countries[correctAnswer])
                             .font(.largeTitle.weight(.semibold))
                     }
-                    ForEach(0..<3) { number in
-                        Button {
-                            flagTapped(number)
-                        } label: {
-                            Image(countries[number])
-                                .renderingMode(.original)
-                                .clipShape(Capsule())
-                                .shadow(radius: 5)
-                        }
-                    }
+                    flagButtons
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 20)
@@ -78,7 +70,34 @@ struct ContentView: View {
         }
     }
     
+    private var flagButtons: some View {
+        ForEach(0..<3) { number in
+            let wrongSelection = !(tappedFlagNumber == nil || tappedFlagNumber == number)
+            return Button {
+                withAnimation {
+                    flagTapped(number)
+                }
+            } label: {
+                Image(countries[number])
+                    .renderingMode(.original)
+                    .clipShape(Capsule())
+                    .shadow(radius: 5)
+            }
+            .rotation3DEffect(
+                .degrees(number == tappedFlagNumber ? 360 : 0),
+                axis: (x: 0, y: 1, z: 0)
+            )
+            .opacity(wrongSelection ? 0.25 : 1)
+            .scaleEffect(wrongSelection ? 0.8 : 1)
+            .rotation3DEffect(
+                .degrees(wrongSelection ? 45 : 0),
+                axis: (x: CGFloat(number)/3, y: -1.0, z: CGFloat(number)/3)
+            )
+        }
+    }
+    
     func flagTapped(_ number: Int) {
+        tappedFlagNumber = number
         if number == correctAnswer {
             scoreTitle = "Correct"
             score += 1
@@ -99,6 +118,7 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        tappedFlagNumber = nil
     }
     
     func restart() {
