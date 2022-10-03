@@ -7,30 +7,34 @@
 
 import SwiftUI
 
-class User: ObservableObject {
-    @Published var firstName = "Bilbo"
-    @Published var lastName = "Baggins"
+struct User: Codable {
+    var firstName: String
+    var lastName: String
 }
 
 struct ContentView: View {
-    @AppStorage("Tap") private var tapCount = 0
-    
-    var body: some View {
-        Button("Tap count: \(tapCount)") {
-            tapCount += 1
+    @State private var user = {
+        if let data = UserDefaults.standard.data(forKey: "UserData") {
+            let decoder = JSONDecoder()
+            if let user = try? decoder.decode(User.self, from: data) {
+                return user
+            }
         }
-    }
-}
-
-struct SecondView: View {
-    let name: String
-    @Environment(\.dismiss) var dismiss
+        return User(firstName: "Taylor", lastName: "Swift")
+    }()
     
     var body: some View {
         VStack {
-            Text("Hello, \(name)!")
-            Button("Dismiss") {
-                dismiss()
+            Text("\(user.firstName) \(user.lastName)")
+            TextField("First name", text: $user.firstName)
+            TextField("Last name", text: $user.lastName)
+            
+            Button("Save User") {
+                let encoder = JSONEncoder()
+                
+                if let data = try? encoder.encode(user) {
+                    UserDefaults.standard.set(data, forKey: "UserData")
+                }
             }
         }
     }
