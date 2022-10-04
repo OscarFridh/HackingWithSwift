@@ -13,6 +13,7 @@
 		B87B819A28EADF5B00230257 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B87B819928EADF5B00230257 /* Preview Assets.xcassets */; };
 		B899CFF728EC612D00266056 /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B899CFF628EC612D00266056 /* ExpenseItem.swift */; };
 		B899CFF928EC616C00266056 /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = B899CFF828EC616C00266056 /* Expenses.swift */; };
+		B899CFFB28EC666F00266056 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B899CFFA28EC666F00266056 /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		B87B819928EADF5B00230257 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B899CFF628EC612D00266056 /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
 		B899CFF828EC616C00266056 /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
+		B899CFFA28EC666F00266056 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 		B87B819128EADF5B00230257 /* iExpense */ = {
 			isa = PBXGroup;
 			children = (
+				B899CFFA28EC666F00266056 /* AddView.swift */,
 				B87B819228EADF5B00230257 /* iExpenseApp.swift */,
 				B87B819428EADF5B00230257 /* ContentView.swift */,
 				B899CFF628EC612D00266056 /* ExpenseItem.swift */,
@@ -145,6 +148,7 @@
 			files = (
 				B899CFF928EC616C00266056 /* Expenses.swift in Sources */,
 				B87B819528EADF5B00230257 /* ContentView.swift in Sources */,
+				B899CFFB28EC666F00266056 /* AddView.swift in Sources */,
 				B899CFF728EC612D00266056 /* ExpenseItem.swift in Sources */,
 				B87B819328EADF5B00230257 /* iExpenseApp.swift in Sources */,
 			);
