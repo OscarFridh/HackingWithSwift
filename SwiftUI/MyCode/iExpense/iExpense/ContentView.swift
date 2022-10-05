@@ -14,20 +14,28 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
+                ForEach(["Personal", "Business"], id: \.self) { expenseType in
+                    Section(expenseType) {
+                        ForEach(expenses(ofType: expenseType)) { item in
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(item.name)
+                                        .font(.headline)
+                                    Text(item.type)
+                                }
+                                
+                                Spacer()
+                                
+                                Text(item.amount, format: .currency(code: .userCurrencyCode))
+                                    .expenseAmount(item.amount)
+                            }
                         }
-                        
-                        Spacer()
-                        
-                        Text(item.amount, format: .currency(code: "USD"))
+                        .onDelete { items in
+                            let expenses = expenses(ofType: expenseType)
+                            removeItems(items.map { expenses[$0] })
+                        }
                     }
                 }
-                .onDelete(perform: removeItems)
             }
             .navigationTitle("iExpense")
             .toolbar {
@@ -43,8 +51,35 @@ struct ContentView: View {
         }
     }
     
-    func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
+    func expenses(ofType type: String) -> [ExpenseItem] {
+        expenses.items.filter { $0.type == type }
+    }
+    
+    func removeItems(_ toRemove: [ExpenseItem]) {
+        expenses.items.removeAll { toRemove.contains($0) }
+    }
+}
+
+extension View {
+    func expenseAmount(_ amount: Double) -> some View {
+        modifier(ExpenseAmount(amount: amount))
+    }
+}
+
+struct ExpenseAmount: ViewModifier {
+    let amount: Double
+    
+    var color: Color {
+        switch amount {
+        case ..<10: return .green
+        case 10..<100: return .yellow
+        default: return .red
+        }
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(color)
     }
 }
 
