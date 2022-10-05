@@ -14,21 +14,28 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
+                ForEach(["Personal", "Business"], id: \.self) { expenseType in
+                    Section(expenseType) {
+                        ForEach(expenses(ofType: expenseType)) { item in
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(item.name)
+                                        .font(.headline)
+                                    Text(item.type)
+                                }
+                                
+                                Spacer()
+                                
+                                Text(item.amount, format: .currency(code: .userCurrencyCode))
+                                    .expenseAmount(item.amount)
+                            }
                         }
-                        
-                        Spacer()
-                        
-                        Text(item.amount, format: .currency(code: .userCurrencyCode))
-                            .expenseAmount(item.amount)
+                        .onDelete { items in
+                            let expenses = expenses(ofType: expenseType)
+                            removeItems(items.map { expenses[$0] })
+                        }
                     }
                 }
-                .onDelete(perform: removeItems)
             }
             .navigationTitle("iExpense")
             .toolbar {
@@ -44,8 +51,12 @@ struct ContentView: View {
         }
     }
     
-    func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
+    func expenses(ofType type: String) -> [ExpenseItem] {
+        expenses.items.filter { $0.type == type }
+    }
+    
+    func removeItems(_ toRemove: [ExpenseItem]) {
+        expenses.items.removeAll { toRemove.contains($0) }
     }
 }
 
