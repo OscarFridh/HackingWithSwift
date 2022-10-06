@@ -13,8 +13,10 @@ struct ContentView: View {
             Image("Example")
                 .resizable()
                 .scaledToFit()
-                .frame(width: geo.size.width * 0.8)
+                .frame(width: geo.size.width * 0.8, height: 300)
+                .background(Color.green)
                 .frame(width: geo.size.width, height: geo.size.height)
+                .background(Color.red)
         }
     }
 }
