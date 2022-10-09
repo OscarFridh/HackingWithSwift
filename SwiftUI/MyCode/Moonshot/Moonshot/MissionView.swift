@@ -55,7 +55,9 @@ struct MissionView: View {
                                             .clipShape(Capsule())
                                             .overlay(
                                                 Capsule()
-                                                    .strokeBorder(.white, lineWidth: 1)
+                                                    .strokeBorder(
+                                                        crewMember.isCommander ? .yellow : .white,
+                                                        lineWidth: crewMember.isCommander ? 2 : 1)
                                             )
                                         
                                         VStack(alignment: .leading) {
@@ -63,8 +65,10 @@ struct MissionView: View {
                                                 .foregroundColor(.white)
                                                 .font(.headline)
                                             Text(crewMember.role)
+                                                .foregroundColor(crewMember.isCommander ? .yellow.opacity(0.6) : .secondary)
                                                 .foregroundColor(.secondary)
                                         }
+                                        .bold(crewMember.isCommander)
                                     }
                                     .padding(.horizontal)
                                 }
@@ -86,6 +90,10 @@ extension MissionView {
     struct CrewMember {
         let role: String
         let astronaut: Astronaut
+        
+        var isCommander: Bool {
+            role == "Commander"
+        }
     }
 }
 
@@ -95,7 +103,7 @@ struct MissionView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-            MissionView(mission: missions[0], astronauts: astronauts)
+            MissionView(mission: missions[1], astronauts: astronauts)
                 .preferredColorScheme(.dark)
         }
     }
