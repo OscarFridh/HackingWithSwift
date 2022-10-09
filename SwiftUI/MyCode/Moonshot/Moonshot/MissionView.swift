@@ -23,6 +23,15 @@ struct MissionView: View {
         }
     }
     
+    struct Divider: View {
+        var body: some View {
+            Rectangle()
+                .frame(height: 2)
+                .foregroundColor(.lightBackground)
+                .padding(.vertical)
+        }
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
@@ -38,7 +47,15 @@ struct MissionView: View {
                             .font(.title.bold())
                             .padding(.bottom, 5)
                         
+                        Divider()
+                        
                         Text(mission.description)
+                        
+                        Divider()
+                        
+                        Text("Crew")
+                            .font(.title.bold())
+                            .padding(.bottom, 5)
                     }
                     .padding(.horizontal)
                     
