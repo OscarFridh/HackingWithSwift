@@ -11,12 +11,26 @@ struct ContentView: View {
     let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     let missions: [Mission] = Bundle.main.decode("missions.json")
     
-    let columns = [
-        GridItem(.adaptive(minimum: 150))
-    ]
-    
     var body: some View {
         NavigationView {
+            GridLayout(astronauts: astronauts, missions: missions)
+                .navigationTitle("Moonshot")
+                .preferredColorScheme(.dark)
+        }
+    }
+}
+
+extension ContentView {
+    
+    struct GridLayout: View {
+        let astronauts: [String: Astronaut]
+        let missions: [Mission]
+        
+        let columns = [
+            GridItem(.adaptive(minimum: 150))
+        ]
+        
+        var body: some View {
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(missions) { mission in
@@ -54,9 +68,7 @@ struct ContentView: View {
                 }
                 .padding([.horizontal, .bottom])
             }
-            .navigationTitle("Moonshot")
             .background(.darkBackground)
-            .preferredColorScheme(.dark)
         }
     }
 }
